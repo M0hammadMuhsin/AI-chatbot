@@ -26,7 +26,7 @@ async function sendMessage() {
 
 async function getBotResponse(message) {
   // === Step 5: Call OpenAI API here ===
-  const apiKey = "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"; // Replace with your key
+  const apiKey = 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; // Replace with your key
   const res = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
