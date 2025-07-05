@@ -18,27 +18,21 @@ async function sendMessage() {
 
   addMessage("Typing...", "bot");
 
-  // Replace "Typing..." with real response
   const response = await getBotResponse(userMessage);
   const typingBubble = chatBox.querySelector(".bot:last-child");
   typingBubble.textContent = response;
 }
 
+// 🔐 Replace this URL with your Pipedream webhook URL
 async function getBotResponse(message) {
-  // === Step 5: Call OpenAI API here ===
-  const apiKey = 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; // Replace with your key
-  const res = await fetch("https://api.openai.com/v1/chat/completions", {
+  const response = await fetch("https://eoftg86yib7crz6.m.pipedream.net", {
     method: "POST",
     headers: {
-      "Authorization": `Bearer ${apiKey}`,
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({
-      model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: message }]
-    })
+    body: JSON.stringify({ message })
   });
 
-  const data = await res.json();
+  const data = await response.json();
   return data.choices[0].message.content;
 }
